@@ -1,0 +1,80 @@
+<% layout('layouts/app') %>
+    <% script('../public/javascripts/p2p.js') -%>
+        <% script('/socket.io/socket.io.js') -%>
+
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container">
+                    <div class="row mb-2">
+
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+            <!-- Main content -->
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="offset-md-5 col-md-2">
+                            <a href="/" class="btn btn-default text-center" type="button">Go back to friend list</a>
+                        </div>
+                        <!-- /.col-md-6 -->
+                    </div>
+                    <div class="row">
+                        
+                        <div class="offset-lg-3 col-lg-6">
+                            
+                            <div class="card card-prirary cardutline direct-chat direct-chat-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Direct Chat</h3>
+
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <!-- Conversations are loaded here -->
+                                    <div class="direct-chat-messages" id="message_content">
+                                        <% message.forEach(item=> { %>
+                                            <% if (item.from==target) { %>
+                                                <div class="direct-chat-msg">
+                                                    <div class="direct-chat-infos clearfix"><span
+                                                            class="direct-chat-name float-left"> <%- item.from %>
+                                                        </span><span class="direct-chat-timestamp float-right"><%- item.time %></span>
+                                                    </div>
+                                                    <div class="direct-chat-text"><%- item.content %></div>
+                                                </div>
+                                                <% } else { %>
+                                                    <div class="direct-chat-msg right">
+                                                        <div class="direct-chat-infos clearfix"><span
+                                                                class="direct-chat-name float-left"> <%- item.from %>
+                                                            </span><span class="direct-chat-timestamp float-right"><%- item.time %></span>
+                                                        </div>
+                                                        <div class="direct-chat-text"><%- item.content %></div>
+                                                    </div>
+                                                    <% }}) %>
+                                    </div>
+                                    <!--/.direct-chat-messages-->
+
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <form>
+                                        <div class="input-group">
+                                            <input type="text" name="message" placeholder="Type Message ..."
+                                                class="form-control" control-id="ControlID-3" id="message-input">
+                                            <input type="hidden" id="message-to" value="<%- target %>">
+                                            <span class="input-group-append">
+                                                <button type="button" class="btn btn-primary" control-id="ControlID-4"
+                                                    id="send-message">Send</button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.card-footer-->
+                            </div>
+                        </div>
+                        <!-- /.col-md-6 -->
+                    </div>
+
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content -->

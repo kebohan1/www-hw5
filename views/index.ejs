@@ -1,0 +1,47 @@
+<% layout('layouts/app') %>
+
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container">
+            <div class="row mb-2">
+                
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="offset-lg-3 col-lg-6">
+                    <h3 class="text-center">Hello <b><%= username %></b></h3>
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h5 class="card-title">Friend list</h5>
+                        </div>
+                        <div class="card-body">
+                            
+                            <% if (friends!=null) { %>
+                                <% friends.forEach(element => { %>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <a href="/p2p/<%- element %>"><%- element %></a>
+                                        </div>
+                                    </div>
+                                <% }) %>
+                            <% } %>
+                        </div>
+                    </div><!-- /.card -->
+                </div>
+                <!-- /.col-md-6 -->
+            </div>
+            <div class="row">
+                <div class="offset-md-5 col-md-2">
+                    <a href="/p2p_random" class="btn btn-primary btn-flat">make some friends</a>
+                </div>
+                <!-- /.col-md-6 -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
